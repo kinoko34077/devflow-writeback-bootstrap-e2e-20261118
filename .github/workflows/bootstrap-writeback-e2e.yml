@@ -1,0 +1,36 @@
+# Exact private-fixture writer Caller for devflow#1050.
+# This workflow is fixed to one repository and one admitted recipe.
+name: Bootstrap writeback E2E (private fixture)
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_branch:
+        description: Existing same-repository scratch PR branch
+        type: string
+        required: true
+      expected_head:
+        description: Exact current head SHA for target_branch
+        type: string
+        required: true
+
+permissions: {}
+
+concurrency:
+  group: bootstrap-writeback-e2e-${{ inputs.target_branch }}
+  cancel-in-progress: false
+
+jobs:
+  writeback:
+    if: ${{ github.repository == 'kinoko34077/devflow-writeback-bootstrap-e2e-20261118' }}
+    permissions:
+      contents: write
+      actions: read
+      pull-requests: read
+    uses: kinoko34077/devflow/.github/workflows/generated-artifact-rollout.yml@92012446963bc9a21e0e71bffc16b4b989c67190
+    with:
+      devflow_sha: 92012446963bc9a21e0e71bffc16b4b989c67190
+      recipe_id: bootstrap-writeback-e2e-v1
+      target_branch: ${{ inputs.target_branch }}
+      expected_head: ${{ inputs.expected_head }}
+      mode: write

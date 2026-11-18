@@ -1,0 +1,10 @@
+{
+  "name": "devflow-writeback-bootstrap-e2e-20261118",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "generate:writeback-e2e": "node scripts/generate-writeback-e2e.js",
+    "verify:writeback-e2e": "node scripts/verify-writeback-e2e.js",
+    "test": "node scripts/verify-writeback-e2e.js"
+  }
+}
