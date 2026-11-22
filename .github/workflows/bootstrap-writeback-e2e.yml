@@ -1,5 +1,5 @@
-# Exact private-fixture writer Caller for devflow#1050.
-# This workflow is fixed to one repository and one admitted recipe.
+# Exact private-fixture writer caller for devflow#1050. The repo and recipe
+# are fixed; only a validated scratch PR branch and expected head are inputs.
 name: Bootstrap writeback E2E (private fixture)
 
 on:
